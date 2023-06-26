@@ -3,14 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useLocalState } from '../../context/LocalStateContext';
 import Loader from '../../components/Loader';
+import Post, { IPost } from '../../components/Post';
 import styles from './page.module.css';
-
-interface IPost {
-    id: number;
-    userId: number;
-    body: string;
-    title: string;
-}
 
 async function get(): Promise<IPost[]> {
     const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -47,13 +41,11 @@ export default function Posts(): JSX.Element {
                     <div style={{ color: 'red' }}>{error}</div>
                 ) : (
                     posts.map(({ id, title, body }: IPost) => (
-                        <div
+                        <Post
                             key={id}
-                            className={styles.post}
-                        >
-                            <h5>{title}</h5>
-                            <p>{body}</p>
-                        </div>
+                            title={title}
+                            body={body}
+                        />
                     ))
                 )}
             </div>
