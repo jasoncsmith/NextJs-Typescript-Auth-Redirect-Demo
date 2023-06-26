@@ -1,0 +1,46 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.header {
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.posts {
+    display: flex;
+    column-gap: 25px;
+    row-gap: 25px;
+    flex-flow: wrap;
+    justify-content: center;
+    padding: 40px;
+}
+
+.post {
+    position: relative;
+    flex: 30%;
+    min-width: 245px;
+    min-height: 200px;
+    border: 2px solid #222;
+    padding: 30px 20px;
+    border-radius: 5px;
+    background-color: #121212;
+    box-shadow: 0 0 5px #111;
+    transition: all 0.2s;
+}
+
+.post h5 {
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+    line-height: 1.5;
+}
+
+.post p {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
