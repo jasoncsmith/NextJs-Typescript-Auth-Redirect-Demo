@@ -1,1 +1,1 @@
-# NextJs, Typescript Auth Redirect Demo
+# NextJs and Typescript Auth Redirect Demo
