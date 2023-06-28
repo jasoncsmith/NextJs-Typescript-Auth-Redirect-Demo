@@ -112,7 +112,6 @@ export default function Login() {
                 <Button
                     className={styles.btnSubmit}
                     type="submit"
-                    sx={{ ml: 1 }}
                     size={'large'}
                 >
                     LOGIN
