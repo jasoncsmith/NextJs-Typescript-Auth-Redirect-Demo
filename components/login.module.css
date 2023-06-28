@@ -12,7 +12,8 @@
 }
 
 .btnSubmit {
-    margin: 7px 0 0 8px;
+    margin: 7px 0 0 8px !important;
+    /* override mui */
 }
 
 .title {
