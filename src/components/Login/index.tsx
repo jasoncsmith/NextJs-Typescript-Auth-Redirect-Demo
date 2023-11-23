@@ -71,8 +71,8 @@ export default function Login() {
         }
 
         setUser(profile.fullName);
-        reset();
-        router.push('/posts');
+
+        router.push('/posts').then(reset);
     }
 
     const errors: IErrors = getErrors();
