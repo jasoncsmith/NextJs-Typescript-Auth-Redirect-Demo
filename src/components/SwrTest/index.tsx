@@ -72,7 +72,6 @@ const Component2 = () => {
     } = useSWR(route, endpoint, {
         revalidateOnFocus: false,
     });
-    console.log(isLoading);
 
     if (isLoading) <Loader />;
 

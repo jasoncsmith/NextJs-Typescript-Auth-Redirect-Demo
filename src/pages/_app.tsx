@@ -8,6 +8,7 @@ import UserStore, { UserContext } from '../context/user';
 import Nav from '../components/Nav';
 import Header from '../components/Header';
 import styles from './index.module.scss';
+import '../styles/globals.scss';
 
 const darkTheme: Theme = createTheme({
     palette: {
@@ -21,16 +22,14 @@ export default function App({ Component, pageProps, ...rest }: AppProps) {
     }, []);
 
     return (
-        <>
-            <ThemeProvider theme={darkTheme}>
-                <UserContext.Provider value={UserStore}>
-                    <Nav />
-                    <Header />
-                    <main className={styles.main}>
-                        <Component {...pageProps} />
-                    </main>
-                </UserContext.Provider>
-            </ThemeProvider>
-        </>
+        <ThemeProvider theme={darkTheme}>
+            <UserContext.Provider value={UserStore}>
+                <Nav />
+                <Header />
+                <main className={styles.main}>
+                    <Component {...pageProps} />
+                </main>
+            </UserContext.Provider>
+        </ThemeProvider>
     );
 }
