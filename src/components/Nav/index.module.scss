@@ -1,0 +1,29 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    background: #151515;
+    z-index: 1;
+
+    &__link {
+        display: inline-block;
+        text-decoration: none;
+        color: inherit;
+        color: #90caf9;
+
+        &--active {
+            color: gold;
+            cursor: default;
+        }
+    }
+
+    &__btn-authenticate {
+        margin-left: 40px;
+    }
+}

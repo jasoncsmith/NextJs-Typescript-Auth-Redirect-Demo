@@ -1,0 +1,10 @@
+.form {
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+
+    &__btn-submit {
+        margin: 7px 0 0 8px !important;
+        /* override mui */
+    }
+}

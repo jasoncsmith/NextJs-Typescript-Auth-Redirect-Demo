@@ -8,7 +8,7 @@ html,
 body {
     max-width: 100vw;
     overflow-x: hidden;
-    font-family: 'Arial';
+    font-family: "Arial";
 }
 
 body {
@@ -24,22 +24,11 @@ h5 {
     font-weight: normal;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-    display: inline-block;
-    color: #90caf9;
-}
-
 button {
     background: #015090 !important;
     color: #fff;
 }
 
-.link--is-active {
-    color: gold;
-    cursor: default;
-}
 strong {
     color: #00b2af;
 }

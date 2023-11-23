@@ -1,10 +1,10 @@
 'use client';
 
-import styles from './login.module.css';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useLocalState } from '../context/LocalStateContext';
 import { Button, TextField } from '@mui/material';
+import styles from './index.module.scss';
+import { useUserContext } from '@/src/context/user';
 
 const enum STATUS {
     IDLE = 'IDLE',
@@ -25,7 +25,7 @@ interface ITouched {
 type IStatus = STATUS.IDLE | STATUS.SUBMITTED;
 
 export default function Login() {
-    const { user, setUser, storeUser } = useLocalState();
+    const { user, setUser } = useUserContext();
     const [profile, setProfile] = useState<IUser>({ fullName: '' });
     const [status, setStatus] = useState<IStatus>(STATUS.IDLE);
     const [touched, setTouched] = useState<ITouched>({ fullName: false });
@@ -70,7 +70,6 @@ export default function Login() {
             return;
         }
 
-        storeUser(profile.fullName);
         setUser(profile.fullName);
         reset();
         router.push('/posts');
@@ -79,44 +78,42 @@ export default function Login() {
     const errors: IErrors = getErrors();
 
     return (
-        <main className={styles.main}>
-            <form
-                className={styles.form}
-                onSubmit={handleSubmit}
+        <form
+            className={styles.form}
+            onSubmit={handleSubmit}
+        >
+            <div>
+                <TextField
+                    name="fullName"
+                    type="text"
+                    placeholder="Name"
+                    label="Name"
+                    value={profile.fullName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    variant="outlined"
+                    tabIndex={1}
+                    error={
+                        (touched.fullName === true ||
+                            status === STATUS.SUBMITTED) &&
+                        errors.fullName
+                            ? true
+                            : false
+                    }
+                    helperText={
+                        (touched.fullName === true ||
+                            status === STATUS.SUBMITTED) &&
+                        errors.fullName
+                    }
+                />
+            </div>
+            <Button
+                className={styles.formBtnSubmit}
+                type="submit"
+                size={'large'}
             >
-                <div>
-                    <TextField
-                        name="fullName"
-                        type="text"
-                        placeholder="Name"
-                        label="Name"
-                        value={profile.fullName}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        variant="outlined"
-                        tabIndex={1}
-                        error={
-                            (touched.fullName === true ||
-                                status === STATUS.SUBMITTED) &&
-                            errors.fullName
-                                ? true
-                                : false
-                        }
-                        helperText={
-                            (touched.fullName === true ||
-                                status === STATUS.SUBMITTED) &&
-                            errors.fullName
-                        }
-                    />
-                </div>
-                <Button
-                    className={styles.btnSubmit}
-                    type="submit"
-                    size={'large'}
-                >
-                    LOGIN
-                </Button>
-            </form>
-        </main>
+                LOGIN
+            </Button>
+        </form>
     );
 }
