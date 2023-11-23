@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { Button, TextField } from '@mui/material';
 import styles from './index.module.scss';
 import { useUserContext } from '@/src/context/user';
